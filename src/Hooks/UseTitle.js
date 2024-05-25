@@ -2,7 +2,7 @@
  
 export const UseTitle = (title) => {
     useEffect(() => {
-        document.title = `${title} - codebook`
+        document.title = `${title} - Codebook`
     }, [title])
   return null;
 }
