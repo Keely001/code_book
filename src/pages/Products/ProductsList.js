@@ -4,12 +4,13 @@ import { FilterBar } from "./components/FilterBar"
 import { useLocation } from "react-router-dom"
 import { UseTitle } from "../../Hooks/UseTitle"
 import { useFilter } from "../../context"
+import { getProductList } from "../../services"
 
 export const ProductsList = () => {
 
   const {products, initialProductList} = useFilter();
   const [show, setShow] = useState(false)
-  const search = useLocation().search;
+  const search = useLocation().search; 
   const searchTerm = new URLSearchParams(search).get("q")
   UseTitle("explore eBook collection")
 
@@ -17,8 +18,7 @@ export const ProductsList = () => {
 
     async function fetchProducts() {
 
-      const resp = await fetch(`http://localhost:8000/products?name_like=${searchTerm? searchTerm: ""}`)
-      const data = await resp.json()
+      const data = await getProductList(searchTerm);
       initialProductList(data)
     }
     fetchProducts();
