@@ -20,6 +20,7 @@ root.render(
           <ScrollToTop />
           <ToastContainer closeButton={false} />
           <App />
+          
         </FilterProvider>
       </CartProvider>
     </Router>
