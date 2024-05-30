@@ -1,3 +1,5 @@
+// Import necessary hooks and components
+
 import { useEffect, useState } from "react"
 import { ProductCard } from "../../components"
 import { FilterBar } from "./components/FilterBar"
@@ -6,6 +8,7 @@ import { UseTitle } from "../../Hooks/UseTitle"
 import { useFilter } from "../../context"
 import { getProductList } from "../../services"
 
+// Define the ProductsList functional component
 export const ProductsList = () => {
 
   const {products, initialProductList} = useFilter();
@@ -14,6 +17,7 @@ export const ProductsList = () => {
   const searchTerm = new URLSearchParams(search).get("q")
   UseTitle("explore eBook collection")
 
+  // Fetch product list based on the search term when the component mounts or searchTerm changes
   useEffect (() => {
 
     async function fetchProducts() {
@@ -23,6 +27,8 @@ export const ProductsList = () => {
     }
     fetchProducts();
   }, [searchTerm])
+
+  // Return the JSX structure of the ProductsList
   return (
     <main>
         <section className="my-5">
